@@ -1,0 +1,18 @@
+import numpy as np
+
+kb = 1.38e-23 #(m^2)*kg*(s^-2)*(K^1)
+T = 300 #(K)
+hbar = 1.05457182e-34 #(m^2)*kg/s
+omega = 2*np.pi*(150e3) #Hz
+P_gas = (1e-3) #mbar: gas pressure
+R = (156/2)*1e-9 #m
+dens = 2200 #kg/m^3: SiO2 density
+m_gas = (28.6*1e3)/(6e23) #kg/molecule: mass of gas molecules //// 21% O2 + 78% N2
+
+m = 4*np.pi*(R**3)*dens/3 #kg
+
+v_gas = ((3*kb*T)/(m_gas))*(1/2)
+gamma_th = (15.8*(R**2)*P_gas)/(m*v_gas)
+tD = (gamma_th * kb*T)/(hbar*omega)
+
+print("Thermal reheating rate =", round(tD/1e9,3), "GHz")
